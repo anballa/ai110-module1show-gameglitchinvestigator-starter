@@ -44,9 +44,12 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📸 Demo
 
-- [x] ![Screenshot of enhanced Streamlit game UI with additional features like difficulty levels, high scores, or custom ranges](pytest_edge_cases.png)
+- [ ] ![](image.png)
+
+*Screenshot of enhanced Streamlit game UI with additional features like difficulty levels, high scores, or custom ranges*
 
 ## 🚀 Stretch Features
 
-- [ ] ![Screenshot of terminal output showing pytest running with 7 tests passed, confirming game logic fixes and edge-case handling](enhanced_ui.png)  
-  *Screenshot showing `python -m pytest tests/test_game_logic.py -v` running successfully with all 7 tests passing, including the new edge-case tests for negative numbers, decimals, large values, zero, and invalid inputs.*
+- [ ] ![](image-1.png)  
+  
+*Screenshot of terminal output showing pytest running with 7 tests passed, confirming game logic fixes and edge-case handling*
