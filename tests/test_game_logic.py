@@ -1,4 +1,4 @@
-from logic_utils import check_guess
+from logic_utils import check_guess, update_score
 
 def test_winning_guess():
     # If the secret is 50 and guess is 50, it should be a win
@@ -23,8 +23,21 @@ def test_check_guess_returns_correct_outcome_and_message():
 
     outcome, message = check_guess(60, 50)
     assert outcome == "Too High"
-    assert message == "📈 Go HIGHER!"
+    assert message == "📉 Go LOWER!"
 
     outcome, message = check_guess(40, 50)
     assert outcome == "Too Low"
-    assert message == "📉 Go LOWER!"
+    assert message == "📈 Go HIGHER!"
+
+
+def test_update_score():
+    # Test score updates for win and wrong guesses
+    # Win on attempt 1: 100 - 10*(1+1) = 80
+    assert update_score(0, "Win", 1) == 80
+    # Win on attempt 5: 100 - 10*(5+1) = 40
+    assert update_score(0, "Win", 5) == 40
+    # Too High: always -5
+    assert update_score(100, "Too High", 1) == 95
+    assert update_score(100, "Too High", 2) == 95
+    # Too Low: always -5
+    assert update_score(100, "Too Low", 1) == 95

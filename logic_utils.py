@@ -39,17 +39,19 @@ def check_guess(guess, secret):
     outcome examples: "Win", "Too High", "Too Low"
     """
     # FIX: Refactored from app.py and removed string comparison bug that caused incorrect hints on even attempts.
+    # FIX: Corrected hint messages to properly guide guesses (Too High -> Go LOWER, Too Low -> Go HIGHER).
     if guess == secret:
         return "Win", "🎉 Correct!"
 
     if guess > secret:
-        return "Too High", "📈 Go HIGHER!"
+        return "Too High", "📉 Go LOWER!"
     else:
-        return "Too Low", "📉 Go LOWER!"
+        return "Too Low", "📈 Go HIGHER!"
 
 
 def update_score(current_score: int, outcome: str, attempt_number: int):
     """Update score based on outcome and attempt number."""
+    # FIX: Made score system consistent - wrong guesses always penalize by -5, wins reward based on attempts.
     if outcome == "Win":
         points = 100 - 10 * (attempt_number + 1)
         if points < 10:
@@ -57,8 +59,6 @@ def update_score(current_score: int, outcome: str, attempt_number: int):
         return current_score + points
 
     if outcome == "Too High":
-        if attempt_number % 2 == 0:
-            return current_score + 5
         return current_score - 5
 
     if outcome == "Too Low":
